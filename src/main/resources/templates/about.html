@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About page </title>
 </head>
 
 <body>
-
-    <div th:replace="/base :: parent"></div>
-    <h1>About Us</h1>
-    <p>Welcome to our company! We are dedicated to providing top-notch services and products to our customers. Our team
-        of professionals works tirelessly to ensure that we meet and exceed your expectations. With years of experience
-        in the industry, we have built a reputation for excellence and reliability. We believe in continuous improvement
-        and innovation to stay ahead in the market. Thank you for choosing us, and we look forward to serving you.</p>
+    <div id="content">
+        <h1>Welcome to about page</h1>
+        <p> This is about page content</p>
+    </div>
+    <script>
+        console.log("About page");
+    </script>
+</body>
 </body>
 
 </html>

@@ -1,14 +1,20 @@
-<div class="parent-fragment" th:fragment="parent(content)">
-    <h1> This is parent Fragment</h1>
-    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur rerum id, quos quis blanditiis ratione
-        facere! Cupiditate deserunt facilis saepe qui delectus ipsa perferendis nesciunt incidunt modi eos, non
-        deleniti.</p>
+<!DOCTYPE html>
+<!-- <html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org"> -->
 
-    <div th:replace="${content}"></div>
+<html lang="en" th:fragment="parent(content, title='Base Page', script)" xmlns:th="http://www.thymeleaf.org">
 
-<div class="test-fragment" th:fragment="test(content)">
-    <h1> This is parent Fragment</h1>
-    <p> FAILED</p>
-    
-    <div th:replace="${content}"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title} ?: 'Base Page'">SCM</title>
+    <link rel="stylesheet" th:href="@{/css/output.css}">
+</head>
 
+<!-- <common header> -->
+
+<body>
+    <section data-th-replace="${content}"></section>
+    <th:block data-th-replace="${script}"></th:block>
+</body>
+
+</html>

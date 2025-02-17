@@ -1,42 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services</title>
-    <link rel="stylesheet" href="styles.css">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base :: parent(~{::#content},~{::title}, ~{::script})}">
+<title>Services page </title>
 </head>
 
 <body>
-    <header>
-        <h1>Our Services</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Consulting</h2>
-            <p>We offer expert consulting services to help you navigate complex business challenges and achieve your
-                goals. Our team of experienced consultants provides strategic advice and practical solutions tailored to
-                your unique needs.</p>
-        </section>
-        <section>
-            <h2>Development</h2>
-            <p>Our development services include custom software development, web development, and mobile app
-                development. We use the latest technologies and best practices to deliver high-quality, scalable, and
-                secure solutions.</p>
-        </section>
-        <section>
-            <h2>Support</h2>
-            <div class="host-tag" th:replace=" ${islogin} ? ~{base :: parent(~{::h2})} : ~{base :: test(~{::h2})}">
-                <p>We provide comprehensive support services to ensure your systems run smoothly and efficiently. Our
-                    support team is available 24/7 to assist with any issues and provide ongoing maintenance and
-                    updates.</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
-    </footer>
+    <div id="content">
+        <h1>Welcome to services page</h1>
+        <p> This is about services content</p>
+    </div>
+    <script>
+        console.log("Services page");
+    </script>
 </body>
 
 </html>
