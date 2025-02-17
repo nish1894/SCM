@@ -8,33 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title} ?: 'Base Page'">SCM</title>
     <link rel="stylesheet" th:href="@{/css/output.css}">
+
+    <!-- Add Flowbite CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css">
 </head>
 
 <body>
     <!-- <common header> -->
-    <ul class="p-4">
-        <li>
-            <a th:href="@{/home}">Home</a>
-        </li>
-        <li>
-            <a th:href="@{/services}">Services</a>
-        </li>
-        <li>
-            <a th:href="@{/about}">About</a>
-        </li>
-    </ul>
-
-
+    <div data-th-replace="~{navbar :: navbar}"></div>
 
     <section data-th-replace="${content}"></section>
     <th:block data-th-replace="${script}"></th:block>
 
-
     <!-- <common footer> -->
-    <footer class=" p-4 ">
-        <p>Learn code </p>
+    <footer class="p-4">
+        <p>Learn code</p>
     </footer>
 
+    <!-- Add Flowbite JS before closing </body> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
 </body>
 
 </html>
