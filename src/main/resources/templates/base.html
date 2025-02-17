@@ -10,11 +10,31 @@
     <link rel="stylesheet" th:href="@{/css/output.css}">
 </head>
 
-<!-- <common header> -->
-
 <body>
+    <!-- <common header> -->
+    <ul class="p-4">
+        <li>
+            <a th:href="@{/home}">Home</a>
+        </li>
+        <li>
+            <a th:href="@{/services}">Services</a>
+        </li>
+        <li>
+            <a th:href="@{/about}">About</a>
+        </li>
+    </ul>
+
+
+
     <section data-th-replace="${content}"></section>
     <th:block data-th-replace="${script}"></th:block>
+
+
+    <!-- <common footer> -->
+    <footer class=" p-4 ">
+        <p>Learn code </p>
+    </footer>
+
 </body>
 
 </html>
