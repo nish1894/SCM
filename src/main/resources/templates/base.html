@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- <html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org"> -->
-<html class="dark" lang="en" th:fragment="parent(content, title='Base Page', script)"
+<html class="light" lang="en" th:fragment="parent(content, title='Base Page', script)"
     xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -20,7 +20,7 @@
 
 <!-- <body class="bg-gray-100 text-black"> -->
 
-<body class="dark:bg-gray-900 dark:text-white">
+<body class=" bg-gray-50 dark:bg-gray-900 dark:text-white">
     <!-- <common header> -->
     <div data-th-replace="~{navbar :: navbar}"></div>
 
@@ -29,9 +29,7 @@
         <section data-th-replace="${content}"></section>
     </div>
     <!-- <common footer> -->
-    <footer class="p-4">
-        <p>Learn code</p>
-    </footer>
+
 
     <!-- Script-->
     <th:block data-th-replace="${script}"></th:block>
