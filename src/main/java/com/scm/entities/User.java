@@ -34,8 +34,7 @@ public class User {
     private String email;
     private String password;
 
-    @Column(length = 10000)
-    private String about;
+ 
     private String profilePic_link;
 
     private boolean enabled;
