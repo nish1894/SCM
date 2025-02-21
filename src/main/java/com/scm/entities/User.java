@@ -28,7 +28,7 @@ public class User {
     private String userId;
 
     @Column(name = "user_name", nullable = false)
-    private String Name;
+    private String name;
 
     @Column(nullable = false, unique = true)
     private String email;

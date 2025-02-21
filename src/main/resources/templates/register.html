@@ -10,8 +10,10 @@
     <div id="content">
 
         <div
-            class="w-full max-w-lg p-6 mx-auto mt-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <form class="space-y-6" data-th-action="@{/register}" method="post">
+            class="w-full max-w-lg p-6 mx-auto mt-2 bg-white border-t-4 border-b-2 border-blue-700 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-blue-600">
+
+
+            <form class="space-y-6" data-th-action="@{'/do-register'}" method="post" data-th-object="${userForm}">
                 <!-- action is responsible for form submission, html optimized is data-th-action instead of th:action -->
 
                 <h5 class="text-3xl font-medium text-center text-gray-900 dark:text-white">Create an account </h5>
@@ -20,7 +22,7 @@
                 <div>
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full
                         Name</label>
-                    <input type="text" name="name" id="name"
+                    <input type="text" name="name" id="name" data-th-field="*{name}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Enter your full name" required />
                 </div>
@@ -30,17 +32,17 @@
                     <div class="w-1/2">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                             Email</label>
-                        <input type="email" name="email" id="email"
+                        <input type="email" name="email" id="email" data-th-field="*{email}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="name@company.com" required />
                     </div>
 
                     <!-- Phone Number -->
                     <div class="w-1/2">
-                        <label for="phone_number"
+                        <label for="phoneNumber"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Phone
                             Number</label>
-                        <input type="tel" name="phone_number" id="phone_number"
+                        <input type="tel" name="phoneNumber" id="phoneNumber" data-th-field="*{phoneNumber}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="+91-9878984898" required />
                     </div>
@@ -51,7 +53,8 @@
                     <div class="w-1/2 relative">
                         <label for="password"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="password" name="password" id="password" placeholder="••••••••"
+                        <input type="password" name="password" id="password" data-th-field="*{password}"
+                            placeholder="••••••••"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             required />
                         <button type="button" onclick="togglePassword('password')"
@@ -71,14 +74,24 @@
                     </div>
                 </div>
 
+                <!-- About (Write something about yourself) -->
+                <div>
+                    <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Write something about yourself
+                    </label>
+                    <textarea name="about" id="about" rows="4" data-th-field="*{about}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="Tell us about yourself..." required></textarea>
+                </div>
+
                 <div class="flex items-start">
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="remember" type="checkbox" value=""
+                            <input id="termsCondition" type="checkbox" value=""
                                 class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
                                 required />
                         </div>
-                        <label for="terms_condition" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I
+                        <label for="termsCondition" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I
                             accept the <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Terms and
                                 Conditions</a>
                         </label>
@@ -91,7 +104,8 @@
                 </button>
 
                 <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Already have an account? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Login
+                    Already have an account? <a data-th-href="@{'/login'}"
+                        class="text-blue-700 hover:underline dark:text-blue-500">Login
                         here</a>
                 </div>
 

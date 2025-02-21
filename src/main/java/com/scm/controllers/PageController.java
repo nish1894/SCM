@@ -1,8 +1,13 @@
 package com.scm.controllers;
 
+
+import com.scm.forms.UserForm;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 // Handles page navigation
@@ -46,9 +51,22 @@ public class PageController {
 
     @RequestMapping("/register")
     // Register page handler
-    public String registerpage() {
+    public String registerpage(Model model) {
+        UserForm userForm = new UserForm();
+        userForm.setName("Nishant");
+        userForm.setEmail("nk8@gmail.com");
+        userForm.setPhoneNumber("+91-1234567890");
+        userForm.setAbout("I am a software developer");
+        model.addAttribute("userForm", userForm);
         System.out.println("Register page handler");
         return "register";
     }
 
+    @RequestMapping(value = "/do-register", method = RequestMethod.POST)
+    // Register page handler
+    public String processRegister(@ModelAttribute UserForm userForm) {
+        System.out.println("Processing Registration form");
+        System.out.println(userForm);
+        return "redirect:/login";
+    }
 }
