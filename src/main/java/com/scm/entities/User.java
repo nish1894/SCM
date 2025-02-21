@@ -36,6 +36,7 @@ public class User {
 
     @Column(length = 10000)
     private String about;
+    private String phoneNumber;
     private String profilePic_link;
 
     private boolean enabled;
@@ -45,6 +46,7 @@ public class User {
     @Builder.Default
     private boolean phoneVerified = false;
 
+    @Enumerated
     // self google Facevook etc
     @Builder.Default
     private Providers provider = Providers.SELF;

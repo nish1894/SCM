@@ -1,8 +1,11 @@
 package com.scm.controllers;
 
 
+import com.scm.entities.User;
 import com.scm.forms.UserForm;
+import com.scm.services.UserService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 // Handles page navigation
 public class PageController {
+
+
+    // construction injection preferred 
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/home")
     // Home page handler
@@ -67,6 +75,20 @@ public class PageController {
     public String processRegister(@ModelAttribute UserForm userForm) {
         System.out.println("Processing Registration form");
         System.out.println(userForm);
+
+        //UserForm --> User
+        User user = User.builder()
+        .name(userForm.getName())
+        .email(userForm.getEmail())
+        .phoneNumber(userForm.getPhoneNumber())
+        .about(userForm.getAbout())
+        .password(userForm.getPassword())
+        .profilePic_link("https://thecomicbookstore.in/wp-content/uploads/2022/09/TCBS2490.jpg")
+        .build();
+        User saveduser = userService.saveUser(user);
+
+        System.out.println("User saved with id: "+saveduser.getUserId());
+
         return "redirect:/login";
     }
 }
