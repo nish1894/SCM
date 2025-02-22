@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
         user2.setEmail(user.getEmail());
         user2.setPassword(user.getPassword());
         user2.setPhoneNumber(user.getPhoneNumber());
-        user2.setProfilePic_link(user.getProfilePic_link());
+        user2.setProfilePicLink(user.getProfilePicLink());
         user2.setAbout(user.getAbout());
         user2.setEnabled(user.isEnabled());
         user2.setEmailVerified(user.isEmailVerified());
