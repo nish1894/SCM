@@ -850,6 +850,9 @@
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
+  .px-1 {
+    padding-inline: calc(var(--spacing) * 1);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -858,6 +861,9 @@
   }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -939,6 +945,9 @@
   }
   .text-green-800 {
     color: var(--color-green-800);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
   }
   .text-red-800 {
     color: var(--color-red-800);

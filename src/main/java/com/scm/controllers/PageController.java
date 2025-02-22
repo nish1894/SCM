@@ -7,10 +7,12 @@ import com.scm.helpers.MessageType;
 import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,19 +76,15 @@ public class PageController {
 
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
     // Register page handler
-    public String processRegister(@ModelAttribute UserForm userForm,HttpSession session) {
+    public String processRegister(@Valid @ModelAttribute UserForm userForm,BindingResult rBindingResult, HttpSession session) {
         System.out.println("Processing Registration form");
         System.out.println(userForm);
 
-        // //UserForm --> User
-        // User user = User.builder()
-        // .name(userForm.getName())
-        // .email(userForm.getEmail())
-        // .phoneNumber(userForm.getPhoneNumber())
-        // .about(userForm.getAbout())
-        // .password(userForm.getPassword())
-        // .profilePicLink("https://thecomicbookstore.in/wp-content/uploads/2022/09/TCBS2490.jpg")
-        // .build();
+
+        //validate form 
+        if(rBindingResult.hasErrors()){
+            return "register";
+        }
 
         User user = new User();
         user.setName(userForm.getName());
@@ -99,6 +97,8 @@ public class PageController {
         User saveduser = userService.saveUser(user);
 
         System.out.println("User saved with id: " + saveduser.getUserId());
+
+        
 
         // add message 
 
