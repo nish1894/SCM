@@ -6,12 +6,18 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.CascadeType;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity(name = "user")
 @Table(name = "user") // can change name, default is class name
@@ -22,7 +28,7 @@ import java.util.*;
 @NoArgsConstructor
 @Builder
 
-public class User {
+public class User implements UserDetails {
 
     @Id
     private String userId;
@@ -39,7 +45,9 @@ public class User {
     private String phoneNumber;
     private String profilePicLink;
 
-    private boolean enabled;
+    // @Getter(AccessLevel.NONE) seperete method for the same 
+    @Builder.Default
+    private boolean enabled = true;
 
     @Builder.Default
     private boolean emailVerified = false;
@@ -57,6 +65,23 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @Builder.Default
     private List<Contact> contacts = new ArrayList<>();
+
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roleList =new ArrayList<>();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        
+        Collection<SimpleGrantedAuthority> roles  =roleList.stream().map(role-> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+        return roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
 
 
 }
