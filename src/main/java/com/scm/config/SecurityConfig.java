@@ -1,4 +1,4 @@
- package com.scm.config;
+package com.scm.config;
 
 import java.io.IOException;
 
@@ -29,6 +29,9 @@ public class SecurityConfig {
 
     @Autowired
     private SecurityCustomUserDetailService userDetailsService;
+
+    @Autowired
+    private OAuthAuthenticationSuccessHandler handler;
 
     //configuration of authentication provider 
     @Bean
@@ -102,6 +105,13 @@ public class SecurityConfig {
             logoutForm.logoutUrl("/do-logout");
             logoutForm.logoutSuccessUrl(("/login?logout=true"));
             
+        });
+
+        //oauth config
+
+        httpSecurity.oauth2Login(oauth ->{
+            oauth.loginPage("/login");
+            oauth.successHandler(handler);
         });
 
         return httpSecurity.build();

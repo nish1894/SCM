@@ -1,1 +1,6 @@
 npx @tailwindcss/cli -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch             
+
+
+client id : - 63316240882-6bu1vnqko1s4q85d8vbe0kjdi5u6qhj5.apps.googleusercontent.com
+
+client secret : - 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
