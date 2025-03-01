@@ -8,7 +8,6 @@ target/
 /target/
 
 src/main/resources/static/css/output.css
-‎rc/resources/static/output.css
 
 # Ignore IDE settings
 .idea/
