@@ -41,6 +41,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         // identify the provider
 
         var oauth2AuthenicationToken = (OAuth2AuthenticationToken) authentication;
+        
 
         String authorizedClientRegistrationId = oauth2AuthenicationToken.getAuthorizedClientRegistrationId();
 
@@ -154,7 +155,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             System.out.println("user saved:" + user.getEmail());
         }
 
-        new DefaultRedirectStrategy().sendRedirect(request, response, "/user/profile");
+        new DefaultRedirectStrategy().sendRedirect(request, response, "/user/dashboard");
 
     }
 
