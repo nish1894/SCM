@@ -15,6 +15,8 @@ public interface UserService {
     boolean isUserExistByPhone(String phone);
     List<User> getAllUsers();
 
+    User getUserByEmail(String email);
+
 
     // add more methods here related to user services[logic], Business logic, core logic 
 

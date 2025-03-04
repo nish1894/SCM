@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="/path/to/your/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/path/to/your/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Welcome to Your Profile page</h1>
+      <h1>Welcome to Your Profile page</h1>
+      <h1 data-th-text = "${loggedInUser.name}"></h1>
+      <h1 data-th-text = "${loggedInUser.email}"></h1>
+
     </header>
-    
-</body>
+
+    <a data-th-href="@{'/do-logout'}">Logout</a>
+  </body>
+</html>
