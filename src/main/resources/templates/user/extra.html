@@ -1,0 +1,139 @@
+<!-- Navigation Bar -->
+<nav
+  data-th-fragment="navbar"
+  class="bg-gradient-to-r pl-64 from-blue-600 to-indigo-700 shadow-md  dark:from-gray-800 dark:to-gray-700 fixed"
+>
+  <!-- Container -->
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-6 py-4"
+  >
+    <!-- Logo Section -->
+    <a th:href="@{/home}" class="flex items-center space-x-1">
+      <img
+        data-th-src="@{/images/logo.png}"
+        class="h-10 drop-shadow-lg"
+        alt="SCM Logo"
+      />
+      <span
+        class="text-3xl font-bold tracking-wide text-blue-400 dark:text-white"
+        >SCM 2.0</span
+      >
+    </a>
+
+    <!-- Mobile Dropdown Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden w-full md:hidden mt-4 space-y-2 bg-gray-100 dark:bg-gray-800 rounded-lg p-4"
+    >
+      <a
+        data-th-href="@{'/home'}"
+        class="block text-gray-900 dark:text-white hover:text-blue-600"
+        >Home</a
+      >
+      <a
+        data-th-href="@{'/about'}"
+        class="block text-gray-900 dark:text-white hover:text-blue-600"
+        >About</a
+      >
+      <a
+        data-th-href="@{'/services'}"
+        class="block text-gray-900 dark:text-white hover:text-blue-600"
+        >Services</a
+      >
+      <a
+        data-th-href="@{'/contact'}"
+        class="block text-gray-900 dark:text-white hover:text-blue-600"
+        >Contact</a
+      >
+      <a
+        data-th-href="@{'/login'}"
+        class="block mt-2 text-center text-white bg-blue-500 rounded-lg py-2 hover:bg-blue-600 transition-all"
+      >
+        Login
+      </a>
+      <a
+        data-th-href="@{'/do-logout'}"
+        class="block text-center text-white bg-red-500 rounded-lg py-2 hover:bg-red-600 transition-all"
+      >
+        Signout
+      </a>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden md:flex md:items-center md:space-x-6">
+      <a
+        data-th-href="@{'/home'}"
+        class="text-gray-100 hover:text-gray-300 transition-all"
+        >Home</a
+      >
+      <a
+        data-th-href="@{'/about'}"
+        class="text-gray-100 hover:text-gray-300 transition-all"
+        >About</a
+      >
+      <a
+        data-th-href="@{'/services'}"
+        class="text-gray-100 hover:text-gray-300 transition-all"
+        >Services</a
+      >
+      <a
+        data-th-href="@{'/contact'}"
+        class="text-gray-100 hover:text-gray-300 transition-all"
+        >Contact</a
+      >
+    </div>
+
+
+    
+
+    <!-- Right-side Controls -->
+    <div class="flex items-center space-x-4 md:space-x-6">
+
+    <!-- user name  -->
+    <h1 data-th-text = "${loggedInUser.email}"></h1>
+
+      <!-- Theme Toggle Switch -->
+    
+      <button
+        id="theme_change_button"
+        class="bg-gray-400 px-4 py-2 rounded-xl dark:bg-gray-500"
+      >
+        <i class="fa-solid fa-circle-half-stroke"></i>
+        <span>light</span>
+      </button>
+
+      <!-- Login & Signout Buttons -->
+       
+
+      <a
+        data-th-href="@{'/do-logout'}"
+        class="hidden md:block px-5 py-2 text-sm font-medium text-white bg-red-600 rounded-lg shadow-md hover:bg-red-700 transition-all"
+      >
+        Signout
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="md:hidden flex items-center p-2 text-white rounded-lg hover:bg-blue-500 transition-all"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+

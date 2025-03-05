@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="/path/to/your/styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Welcome to Your Dashboard</h1>
-    </header>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
 
-    <a data-th-href="@{'/do-logout'}">Logout</a>
+<head>
+    <title>Dashboard page</title>
+</head>
 
-    <a data-th-href="@{'/user/profile'}">profile</a>
-  </body>
+<body>
+  <div id="content">
+        
+    <!-- <user is logged in: Sidebar > -->
+    <div th:if="${loggedInUser}">
+      <div data-th-replace="~{user/sidebar}"></div> 
+    </div>
+
+  
+  <div id="content" class = "sm:pl-64 pt-20">
+    <h1>Welcome to Dashboard Page</h1>
+    </div>
+    <script>
+        console.log("Contact page");
+    </script>
+
+  </div>
+</body>
+
 </html>
