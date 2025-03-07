@@ -32,6 +32,8 @@ public class Contact {
 
     private boolean favorite;
 
+    private String cloudinaryImagePublicId; 
+
     @ManyToOne
     private User user; 
 
