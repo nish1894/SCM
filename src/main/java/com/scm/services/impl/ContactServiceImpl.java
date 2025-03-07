@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.scm.entities.Contact;
-import com.scm.entities.User;
 import com.scm.services.ContactService;
 import com.scm.repositories.*;
 import com.scm.helpers.*;
@@ -28,7 +27,6 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public Contact update(Contact contact) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
@@ -55,7 +53,6 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public List<Contact> search(String name, String email, String phoneNumber) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'search'");
     }
 

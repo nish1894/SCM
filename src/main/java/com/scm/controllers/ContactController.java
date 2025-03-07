@@ -1,5 +1,7 @@
 package com.scm.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import com.scm.helpers.Helper;
 import com.scm.helpers.Message;
 import com.scm.helpers.MessageType;
 import com.scm.services.ContactService;
+import com.scm.services.ImageService;
 import com.scm.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,11 +30,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/user/contacts")
 public class ContactController {
 
+    private Logger logger = LoggerFactory.getLogger(ContactController.class);
+
     @Autowired
     private ContactService contactService; 
 
+    private ImageService imageService; 
+
     @Autowired
     private UserService userService;
+
+
 
 
     // add contact page hadler
@@ -58,6 +67,8 @@ public class ContactController {
         
         if(result.hasErrors()){
 
+            result.getAllErrors().forEach(error -> logger.info(error.toString()) );
+
             return "user/add-contact";
         }
 
@@ -68,6 +79,11 @@ public class ContactController {
 
         //process the contact picture 
 
+        logger.info("file information: {}", contactForm.getContactImage().getOriginalFilename());
+
+        String fileUrl = imageService.uploadImage(contactForm.getContactImage());
+
+        //form data
         Contact contact = new Contact();
 
         contact.setName(contactForm.getName());
@@ -79,8 +95,9 @@ public class ContactController {
         contact.setUser(user);
         contact.setLinkedInLink(contactForm.getLinkedInLink());
         contact.setWebsiteLink(contactForm.getWebsiteLink());
+        contact.setPic_link(fileUrl);
 
-        contactService.save(contact); 
+        // contactService.save(contact); 
 
         System.out.println(contactForm);
 

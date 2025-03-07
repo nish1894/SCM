@@ -39,7 +39,10 @@ public class ContactForm {
 
     private String linkedInLink;
 
-    private MultipartFile profileImage; //will be processed so different name 
+    // will create an annotation
+    //size
+    //resolution
+    private MultipartFile ContactImage; //will be processed so different name 
 
 
 
