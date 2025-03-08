@@ -272,17 +272,30 @@
                   <input
                     id = "image_file_input"
                     data-th-field="*{contactImage}"
-                    class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    class="block w-full mb-2 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     type="file"
                     
                   />
+
+                  <!-- Validation Error Message image -->
+                  <ul
+                  data-th-if="${#fields.hasErrors('contactImage')}"
+                  class="text-red-500 text-xs  pl-10"
+                >
+                  <li
+                    data-th-each="err : ${#fields.errors('contactImage')}"
+                    data-th-text="${err}"
+                  ></li>
+                </ul>
 
                   <img 
                   class ="max-h-26"
                   src ="" id ="upload_image_preview" alt=""> 
                 </div>
 
+
                 <div class="flex items-center gap-4">
+                  
                   <!-- favorite checkbox -->
 
                   <div class="flex items-center mb-3">

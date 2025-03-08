@@ -2,6 +2,8 @@ package com.scm.forms;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.scm.validators.ValidFile;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -42,7 +44,9 @@ public class ContactForm {
     // will create an annotation
     //size
     //resolution
-    private MultipartFile ContactImage; //will be processed so different name 
+
+    @ValidFile(message = "Invalid File")
+    private MultipartFile contactImage; //will be processed so different name 
 
 
 
