@@ -161,8 +161,14 @@ public class ContactController {
              @RequestParam(value = "direction", defaultValue = "asc") String direction,
              Model model,
              Authentication authentication) {
+
+
+        //Validate if the field is empty
+        if (contactSearchForm.getField() == null || contactSearchForm.getField().trim().isEmpty()) {
+            return "user/contacts"; // Redirect or show the contacts page with an error message
+            }
  
-         logger.info("field {} keyword {}", contactSearchForm.getField(), contactSearchForm.getValue());
+        logger.info("field {} keyword {}", contactSearchForm.getField(), contactSearchForm.getValue());
  
          var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
  

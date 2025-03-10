@@ -2,6 +2,8 @@ package com.scm.entities;
 
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 // import java.util.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,6 +37,7 @@ public class Contact {
     private String cloudinaryImagePublicId; 
 
     @ManyToOne
+    @JsonIgnore
     private User user; 
 
 
