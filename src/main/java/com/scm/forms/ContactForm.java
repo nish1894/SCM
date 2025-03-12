@@ -48,6 +48,8 @@ public class ContactForm {
     @ValidFile(message = "Invalid File")
     private MultipartFile contactImage; //will be processed so different name 
 
+    private String pic_link;
+
 
 
 }

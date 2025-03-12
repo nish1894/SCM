@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.Page;
 
@@ -160,11 +161,22 @@ public class ContactController {
              @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
              @RequestParam(value = "direction", defaultValue = "asc") String direction,
              Model model,
-             Authentication authentication) {
+             Authentication authentication,
+             HttpSession session) {
 
 
         //Validate if the field is empty
         if (contactSearchForm.getField() == null || contactSearchForm.getField().trim().isEmpty()) {
+
+            
+         session.setAttribute("message",
+         Message.builder()
+                 .content("Select a Field !! ")
+                 .type(MessageType.red)
+                 .build()
+
+                );
+
             return "user/contacts"; // Redirect or show the contacts page with an error message
             }
  
@@ -193,6 +205,26 @@ public class ContactController {
          model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
  
          return "user/search";
+     }
+
+
+       // detete contact
+     @RequestMapping("/delete/{contactId}")
+     public String deleteContact(
+             @PathVariable("contactId") String contactId,
+             HttpSession session) {
+         contactService.delete(contactId);
+         logger.info("contactId {} deleted", contactId);
+ 
+         session.setAttribute("message",
+                 Message.builder()
+                         .content("Contact is Deleted successfully !! ")
+                         .type(MessageType.green)
+                         .build()
+ 
+         );
+ 
+         return "redirect:/user/contacts";
      }
   
 }

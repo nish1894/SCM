@@ -4,3 +4,69 @@ npx @tailwindcss/cli -i ./src/main/resources/static/css/input.css -o ./src/main/
 client id : - 63316240882-6bu1vnqko1s4q85d8vbe0kjdi5u6qhj5.apps.googleusercontent.com
 
 client secret : - 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
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<!-- <html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org"> -->
+<html class="light" lang="en" th:fragment="parent(content, title='Base Page', script)"
+    xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title} ?: 'Base Page'">SCM</title>
+    <link rel="stylesheet" th:href="@{/css/output.css}">
+
+    <!-- Add Flowbite CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<!-- <body class="bg-gray-100 text-black"> -->
+
+
+<body class=" bg-gray-50 dark:bg-gray-900 dark:text-white">
+
+    <!-- <user is logged in > -->
+    <div th:if="${loggedInUser}">
+        <div data-th-replace="~{user/userNavbar}"></div>
+
+    </div>
+
+
+
+    <!-- <user is NOT logged in > -->
+    <div th:unless="${loggedInUser}">
+        <div data-th-replace="~{navbar :: navbar}"></div>
+
+    </div>
+
+
+    <!-- <Main content> -->
+    <div class="p-4 ">
+        <section data-th-replace="${content}"></section>
+    </div>
+    <!-- <common footer> -->
+
+
+    <!-- Script-->
+    <th:block data-th-replace="${script}"></th:block>
+
+    <!-- Add Flowbite JS before closing </body> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script data-th-src="@{'/js/script.js'}"></script>
+</body>
+
+</html>
+

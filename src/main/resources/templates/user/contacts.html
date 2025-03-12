@@ -4,7 +4,7 @@
   th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
 >
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script> -->
     <title>All Your Contacts</title>
   </head>
   <body>
@@ -24,6 +24,15 @@
 
           <div class="contacts_container p-5">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              
+              <!-- Warning Message  -->
+
+            
+              <div data-th-replace="~{message :: messagebox}"></div>
+        
+
+                <!-- Form  -->
+
               <form
                 data-th-object="${contactSearchForm}"
                 action=""
@@ -81,7 +90,6 @@
                   >
                     Search
                   </button>
-
                 </div>
               </form>
               <table
@@ -151,14 +159,22 @@
                     </td>
                     <td class="px-6 py-4">
                       <div>
-                        <a href="">
+                        <!-- <a data-th-href="@{'/user/contacts/delete/'+*{id}}">
                           <i class="fa-solid w-6 h-6 fa-trash"></i>
-                        </a>
+                        </a> -->
+
+                        <!-- delete contact -->
+                        <button th:onclick="deleteContact([[${c.id}]])">
+                          <i class="fa-solid w-6 h-6 fa-trash"></i>
+                        </button>
+
                         <a href=""> <i class="fa-solid w-6 h-6 fa-pen"></i></a>
-                        <button  
-                        th:data-id="${c.id}"
-                        th:onclick="loadContactdata(this.getAttribute('data-id'))">
-                         <i class="fa-solid fa-eye"></i></button>
+                        <button
+                          th:data-id="${c.id}"
+                          th:onclick="loadContactdata(this.getAttribute('data-id'))"
+                        >
+                          <i class="fa-solid fa-eye"></i>
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -213,7 +229,7 @@
             </div>
           </div>
         </div>
-        <div data-th-replace ="~{user/contact_modals::contact_modal}"></div>
+        <div data-th-replace="~{user/contact_modals::contact_modal}"></div>
       </div>
     </div>
     <script data-th-src="@{'/js/contacts.js'}"></script>
